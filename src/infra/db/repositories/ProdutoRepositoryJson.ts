@@ -15,7 +15,7 @@ interface IDatabase {
 export class ProdutoRepositoryJson implements IProdutoRepository {
   // O caminho para o nosso arquivo de banco de dados.
   // `__dirname` é o diretório do arquivo atual, e subimos alguns níveis para chegar na raiz do projeto.
-  private readonly dbPath = path.join(__dirname, '../../../../db.json');
+  private readonly dbPath = path.join(__dirname, '../../../../data/db.json');
 
   // Método auxiliar privado para ler o banco de dados.
   private async readDb(): Promise<IDatabase> {

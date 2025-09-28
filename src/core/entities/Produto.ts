@@ -5,7 +5,6 @@ import crypto from 'crypto';
 // Usar uma classe nos permite não só ter um formato de dados, mas também
 // adicionar métodos que contenham regras de negócio específicas do produto no futuro.
 export class Produto {
-  // Propriedades da nossa entidade
   id: string;
   nome: string;
   descricao: string;
@@ -18,21 +17,14 @@ export class Produto {
   // Usamos `Partial<Produto>` para permitir a criação de um produto passando apenas algumas
   // propriedades, enquanto outras podem ser geradas automaticamente (como id, criadoEm).
   constructor(props: Partial<Produto>) {
-    // O `Object.assign` copia as propriedades do objeto `props` para a instância `this`.
-    Object.assign(this, props);
-
-    // Se um ID não for fornecido, um novo ID aleatório será gerado.
-    // Isso é útil para garantir que cada produto tenha um identificador único.
-    if (!props.id) {
-      this.id = crypto.randomUUID();
-    }
-
-    // Se a data de criação não for fornecida, a data atual é usada.
-    if (!props.criadoEm) {
-      this.criadoEm = new Date();
-    }
-
-    // A data de atualização é sempre definida para a data atual ao criar ou atualizar.
-    this.atualizadoEm = new Date();
+    // Atribuição explícita de cada propriedade para satisfazer o modo strict do TypeScript.
+    // Isso garante que todas as propriedades terão um valor definido.
+    this.id = props.id || crypto.randomUUID();
+    this.nome = props.nome || ''; // Garante que nome seja uma string vazia se não fornecido
+    this.descricao = props.descricao || ''; // Garante que descricao seja uma string vazia se não fornecido
+    this.preco = props.preco || 0; // Garante que preco seja 0 se não fornecido
+    this.estoque = props.estoque || 0; // Garante que estoque seja 0 se não fornecido
+    this.criadoEm = props.criadoEm || new Date();
+    this.atualizadoEm = new Date(); // Sempre atualiza a data de atualização
   }
 }

@@ -51,3 +51,7 @@ Este caso de uso descreve o processo de cadastrar um novo produto no sistema.
   "atualizadoEm": "2025-09-28T10:00:00.000Z"
 }
 ```
+
+## 9. Observações sobre Persistência (Erro `findIndex`)
+
+Durante os testes, foi encontrado um erro (`Cannot read properties of undefined (reading 'findIndex')`) ao tentar persistir dados. A causa raiz foi a ausência do arquivo `db.json` na raiz do projeto. O repositório `ProdutoRepositoryJson` espera que este arquivo exista (mesmo que vazio com `{}`) para poder ler e escrever os dados dos produtos. A solução foi garantir a criação do `db.json` antes de iniciar a aplicação.
