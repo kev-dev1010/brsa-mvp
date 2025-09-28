@@ -1,0 +1,12 @@
+{
+  "name": "brsa-mvp",
+  "version": "1.0.0",
+  "description": "Produto minimo viavel para BRSA",
+  "license": "ISC",
+  "author": "Kevin Menezes Herrera",
+  "type": "commonjs",
+  "main": "/src/main.js",
+  "scripts": {
+    "test": "test"
+  }
+}
